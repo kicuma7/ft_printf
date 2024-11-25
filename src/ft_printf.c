@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:46:59 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/11/25 15:33:43 by jquicuma         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:36:04 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ int ft_printf(char *format, ...)
                 i += ft_puthex(va_arg(args, unsigned int), LOW_HEX);
             else if (*format == 'X')
                 i += ft_puthex(va_arg(args, unsigned int), UP_HEX);
+            else if (*format == 'p')
+            {
+                i += ft_putvoid(va_arg(args, unsigned long));
+            }
             format++;
         }
         else
