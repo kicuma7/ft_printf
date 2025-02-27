@@ -13,7 +13,8 @@ FILES = ft_printf \
 		ft_putchar \
 		print_format \
 		ft_putstr \
-		print_num
+		print_num \
+		print_hexa
 
 SRCS = $(addprefix $(SRC), $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(OBJ), $(addsuffix .o, $(FILES)))
