@@ -5,29 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 13:43:39 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/11/25 16:38:06 by jquicuma         ###   ########.fr       */
+/*   Created: 2025/02/27 10:14:46 by jquicuma          #+#    #+#             */
+/*   Updated: 2025/02/27 11:07:36 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
 # include <unistd.h>
-# include <stdbool.h>
-
-# define LOW_HEX "0123456789abcdef"
-# define UP_HEX "0123456789ABCDEF"
+# include <stdlib.h>
+# include <stdarg.h>
 
 int	ft_printf(char *format, ...);
-int	ft_putstr(char *str);
 int	ft_putchar(char c);
-int	ft_putnbr(int num);
-int	ft_putnbr_u(unsigned int num);
-int	ft_puthex(unsigned int num, char *base);
-int	ft_putvoid(unsigned long num);
+int	ft_putstr(char *str);
+int	print_format(char format_char, va_list args);
 
 #endif

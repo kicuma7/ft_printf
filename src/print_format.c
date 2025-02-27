@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putvoid.c                                       :+:      :+:    :+:   */
+/*   print_format.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 15:45:08 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/11/25 16:40:01 by jquicuma         ###   ########.fr       */
+/*   Created: 2025/02/27 10:24:56 by jquicuma          #+#    #+#             */
+/*   Updated: 2025/02/27 11:10:01 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int	ft_putvoid(unsigned long num)
+int	print_format(char format_char, va_list args)
 {
-	char		*hex_chars;
-	int			i;
-	static bool	put_char = true;
-
-	hex_chars = LOW_HEX;
-	i = 0;
-	if (!num)
-		return (ft_putstr("(nil)"));
-    if (put_char)
-    {
-        i += ft_putstr("0x");
-        put_char = false;
-    }
-	if (num >= 16)
-		i += ft_putvoid(num / 16);
-	i += ft_putchar(hex_chars[num % 16]);
-	return (i);
+	if (format_char == '\0')
+		return (0);
+	if (format_char == '%')
+		return (ft_putchar('%'));
+	else if (format_char == 'c')
+		return (ft_putchar(va_arg(args, int)));
+	else if (format_char == 's')
+		return (ft_putstr(va_arg(args, char *)));
+	return (1);
 }

@@ -1,45 +1,33 @@
-# Nome do programa/biblioteca
 NAME = libftprintf.a
 
-# Diretórios
-SRCDIR = src
-INCDIR = inc
-OBJDIR = obj
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g3
+AR = ar rc
+RN = ranlib
+RM = rm -rf
 
-# Arquivos fonte
-SRC = $(SRCDIR)/ft_printf.c \
-      $(SRCDIR)/ft_puthex.c \
-      $(SRCDIR)/ft_putnbr.c \
-      $(SRCDIR)/ft_putstr.c \
-      $(SRCDIR)/ft_putvoid.c
+SRC = ./src/
+OBJ = ./.obj/
 
-# Arquivos objetos
-OBJ = $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+FILES = ft_printf \
+		ft_putchar \
+		print_format \
+		ft_putstr
 
-# Compilador e flags
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I$(INCDIR)
+SRCS = $(addprefix $(SRC), $(addsuffix .c, $(FILES)))
+OBJS = $(addprefix $(OBJ), $(addsuffix .o, $(FILES)))
 
-# Regras principais
-all: $(NAME)
+$(NAME): $(OBJS)
+	$(AR) $@ $^
+	$(RN) $@
 
-$(NAME): $(OBJ)
-	ar rcs $@ $^
-
-# Compilação dos arquivos objetos
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@mkdir -p $(OBJDIR)
+$(OBJ)%.o: $(SRC)%.c
+	mkdir -p $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Limpeza de objetos
-clean:
-	rm -rf $(OBJDIR)
+all: $(NAME)
 
-# Limpeza completa
-fclean: clean
-	rm -f $(NAME)
-
-# Recompilar tudo
-re: fclean all
-
-.PHONY: all clean fclean re
+run: $(NAME) main.c
+	$(CC) main.c -L. -lftprintf -o printf
+	clear
+	./printf

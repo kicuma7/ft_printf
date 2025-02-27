@@ -5,30 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 13:47:42 by jquicuma          #+#    #+#             */
-/*   Updated: 2024/11/25 16:27:21 by jquicuma         ###   ########.fr       */
+/*   Created: 2025/02/27 11:06:32 by jquicuma          #+#    #+#             */
+/*   Updated: 2025/02/27 11:08:24 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int ft_putchar(char c)
+int	ft_putstr(char *str)
 {
-    write(1, &c, 1);
-    return (1);
-}
+	int	i;
 
-int ft_putstr(char *str)
-{
-    int i;
-
-    i = 0;
-    if (!str)
-        i += ft_putstr("(null)");
-    else
-    {
-        while (str[i])
-            ft_putchar(str[i++]);
-    }
-    return (i);
+	i = 0;
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+	return (i);
 }
