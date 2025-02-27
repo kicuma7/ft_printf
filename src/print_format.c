@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 10:24:56 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/02/27 12:04:31 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/02/27 12:21:05 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ int	print_format(char format_char, va_list args)
 		return (print_hexa(va_arg(args, unsigned int), LOW_HEX));
 	else if (format_char == 'X')
 		return (print_hexa(va_arg(args, unsigned int), UP_HEX));
-	return (1);
+	else if (format_char == 'p')
+		return (print_void(va_arg(args, unsigned int)));
+	return (0);
 }
