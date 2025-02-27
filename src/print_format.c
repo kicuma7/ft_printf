@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 10:24:56 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/02/27 11:10:01 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:17:00 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ int	print_format(char format_char, va_list args)
 		return (ft_putchar(va_arg(args, int)));
 	else if (format_char == 's')
 		return (ft_putstr(va_arg(args, char *)));
+	else if (format_char == 'i' || format_char == 'd')
+		return (print_num(va_arg(args, int)));
 	return (1);
 }

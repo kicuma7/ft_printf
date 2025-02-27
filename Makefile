@@ -12,7 +12,8 @@ OBJ = ./.obj/
 FILES = ft_printf \
 		ft_putchar \
 		print_format \
-		ft_putstr
+		ft_putstr \
+		print_num
 
 SRCS = $(addprefix $(SRC), $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(OBJ), $(addsuffix .o, $(FILES)))

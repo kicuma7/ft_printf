@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_num.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 10:14:46 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/02/27 11:18:25 by jquicuma         ###   ########.fr       */
+/*   Created: 2025/02/27 11:17:22 by jquicuma          #+#    #+#             */
+/*   Updated: 2025/02/27 11:33:09 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../includes/ft_printf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	print_num(int num)
+{
+	int	count;
 
-int	ft_printf(char *format, ...);
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	print_format(char format_char, va_list args);
-int	print_num(int num);
-
-#endif
+	count = 0;
+	if (num >= 10)
+	{
+		count += print_num(num / 10);
+		count += ft_putchar(num % 10 + '0');
+	}
+	else
+		count += ft_putchar(num % 10 + '0');
+	return (count);
+}
